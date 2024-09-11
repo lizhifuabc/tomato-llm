@@ -1,0 +1,26 @@
+spring:
+  cloud:
+    function:
+      definition: fileSupplier|documentReader|splitter|vectorStoreConsumer  # 定义函数链：文件供应器、文档阅读器、分割器、向量存储消费者
+
+  ai:
+    vectorstore:
+      chroma:
+        initialize-schema: true  # 是否初始化 Chroma 向量存储的模式
+        client:
+          host: ${CHROMA_HOST:http://192.168.18.64}  # 需要替换为自己的 Chroma 服务地址
+          port: ${CHROMA_PORT:8000}  # 需要替换为自己的 Chroma 服务端口
+    ollama:
+      base-url: ${AI_OLLAMA_BASE_URL:http://api.ollama.io:11434}  # 需要替换为自己的 Ollama API 地址
+      chat:
+        options:
+          model: qwen2_1.5B:latest  # 需要替换为自己的模型名称
+          temperature: 0.7  # 温度参数，控制模型输出的多样性
+
+file:
+  supplier:
+    directory: /tmp/dropoff  # 文件供应器监控的目录
+    filename-regex: .*\.(pdf|docx|txt|pages)  # 文件名正则表达式，过滤指定格式的文件
+
+server:
+  port: 0  # 随机分配服务端口
