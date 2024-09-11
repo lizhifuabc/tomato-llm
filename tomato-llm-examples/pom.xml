@@ -14,6 +14,7 @@
     <modules>
         <module>tomato-llm-examples-chroma</module>
         <module>tomato-llm-examples-ollama</module>
+        <module>tomato-llm-examples-milvus</module>
     </modules>
 
     <properties>

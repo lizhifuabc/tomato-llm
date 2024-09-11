@@ -1,0 +1,21 @@
+version: '3.9'
+
+networks:
+  net:
+    driver: bridge  # 定义一个桥接网络
+
+services:
+  server:
+    image: ghcr.io/chroma-core/chroma:latest  # 使用 Chroma 的最新镜像
+    environment:
+      - IS_PERSISTENT=TRUE  # 设置环境变量，启用持久化存储
+    volumes:
+      - chroma-data:/chroma/chroma/  # 挂载数据卷到容器中的 /chroma/chroma 目录
+    ports:
+      - 8000:8000  # 映射主机的 8000 端口到容器的 8000 端口
+    networks:
+      - net  # 连接到定义的网络 net
+
+volumes:
+  chroma-data:
+    driver: local  # 使用本地卷驱动程序存储数据
