@@ -5,4 +5,4 @@ spring:
         options:
           model: qwen2_1.5B:latest
           temperature: 0.7
-      base-url: ${AI_OLLAMA_BASE_URL:http://116.204.106.131:11434}
+      base-url: ${AI_OLLAMA_BASE_URL:http://api.ollama.io:11434}
