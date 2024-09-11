@@ -1,0 +1,40 @@
+### 设置要处理的文件资源路径
+### 例如: app.resource=file:///Users/yourname/Downloads/yourfile.pdf
+###    或者 app.resource=classpath:/data/myfile.pdf
+app:
+  resource: https://en.wikipedia.org/wiki/Chess  # 示例URL资源路径
+spring:
+  ai:
+    ollama:
+      chat:
+        options:
+          model: qwen2_1.5B:latest  # 设置 Ollama 模型名称
+      base-url: ${AI_OLLAMA_BASE_URL:http://api.ollama.io:11434}  # Ollama API 基本 URL
+    vectorstore:
+      chroma:
+        initialize-schema: true  # 是否初始化 Chroma 向量数据库的架构
+    chat:
+      observations:
+        include-prompt: true  # 是否包含对话提示
+        include-completion: true  # 是否包含对话完成
+  application:
+    name: spring-ai-rag-example  # 应用名称
+  docker:
+    compose:
+      stop:
+        command: down  # Docker Compose 停止命令
+        arguments: -v  # 停止后移除相关的卷
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health  # 暴露健康检查端点
+          - metrics  # 暴露应用度量端点
+          - prometheus  # 暴露 Prometheus 度量端点
+
+  ### 设置采样概率为 1.0，启用 100% 请求的追踪
+  tracing:
+    sampling:
+      probability: 1.0  # 采样率，设置为 1.0 表示全部请求都进行追踪

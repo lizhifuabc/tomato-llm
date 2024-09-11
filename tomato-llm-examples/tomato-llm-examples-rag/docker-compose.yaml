@@ -1,0 +1,49 @@
+services:
+  chroma:
+    image: ghcr.io/chroma-core/chroma:latest  # 使用最新的 ChromaDB 镜像
+    environment:
+      - IS_PERSISTENT=TRUE  # 配置 ChromaDB 数据持久化
+    volumes:
+      - chroma-data:/chroma/chroma/  # 挂载数据卷以保存 Chroma 数据
+    ports:
+      - 8000:8000  # 将 ChromaDB 的 8000 端口映射到主机
+    networks:
+      - net  # 使用自定义网络
+
+  zipkin:
+    image: ghcr.io/openzipkin/zipkin-slim:${TAG:-latest}  # 使用最新的 Zipkin 镜像进行分布式追踪
+    container_name: zipkin  # 容器名称
+    environment:
+      - STORAGE_TYPE=mem  # 将 Zipkin 存储配置为内存存储
+    ports:
+      - 9411:9411  # 将 Zipkin 的 9411 端口映射到主机
+
+  prometheus:
+    image: prom/prometheus  # 使用 Prometheus 镜像进行系统监控
+    container_name: prometheus  # 容器名称
+    volumes:
+      - "./prometheus.yml:/etc/prometheus/prometheus.yml"  # 挂载自定义 Prometheus 配置文件
+    networks:
+      - net  # 使用自定义网络
+    ports:
+      - 9090:9090  # 将 Prometheus 的 9090 端口映射到主机
+
+  grafana:
+    image: grafana/grafana  # 使用 Grafana 镜像进行数据可视化
+    container_name: grafana  # 容器名称
+    restart: unless-stopped  # 设置容器重启策略为除非手动停止，否则一直重启
+    ports:
+      - '3000:3000'  # 将 Grafana 的 3000 端口映射到主机
+    volumes:
+      - grafana-storage:/var/lib/grafana  # 挂载数据卷以保存 Grafana 的数据
+    networks:
+      - net  # 使用自定义网络
+
+volumes:
+  chroma-data:
+    driver: local  # 配置本地卷来保存 Chroma 的数据
+  grafana-storage: {}  # 配置本地卷来保存 Grafana 的数据
+
+networks:
+  net:
+    driver: bridge  # 配置使用 bridge 网络模式
