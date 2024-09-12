@@ -28,7 +28,7 @@ public class ChatController {
      * @return 回答
      */
     @GetMapping("/chat")
-    String chat(@RequestParam(defaultValue = "唐诗三百首") String question) {
+    String chat(@RequestParam(defaultValue = "你是谁") String question) {
         return chatClient.prompt()
                 .user(question)
                 .call()
@@ -41,7 +41,7 @@ public class ChatController {
      * @return 回答
      */
     @GetMapping("/chat/generic-options")
-    String chatWithGenericOptions(@RequestParam(defaultValue = "唐诗三百首") String question) {
+    String chatWithGenericOptions(@RequestParam(defaultValue = "你是谁") String question) {
         return chatClient.prompt()
                 .user(question)
                 .options(ChatOptionsBuilder.builder()
@@ -62,7 +62,7 @@ public class ChatController {
      * @return 回答
      */
     @GetMapping("/chat/provider-options")
-    String chatWithProviderOptions(@RequestParam(defaultValue = "唐诗三百首") String question) {
+    String chatWithProviderOptions(@RequestParam(defaultValue = "你是谁") String question) {
         return chatClient.prompt()
                 .user(question)
                 .options(OllamaOptions.create()

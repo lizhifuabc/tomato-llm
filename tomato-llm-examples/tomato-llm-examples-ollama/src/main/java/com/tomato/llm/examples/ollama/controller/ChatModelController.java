@@ -27,12 +27,12 @@ public class ChatModelController {
     }
     
     @GetMapping("/chat")
-    String chat(@RequestParam(defaultValue = "唐诗三百首") String question) {
+    String chat(@RequestParam(defaultValue = "你是谁") String question) {
         return chatModel.call(question);
     }
 
     @GetMapping("/chat/generic-options")
-    String chatWithGenericOptions(@RequestParam(defaultValue = "唐诗三百首") String question) {
+    String chatWithGenericOptions(@RequestParam(defaultValue = "你是谁") String question) {
         return chatModel.call(new Prompt(question, ChatOptionsBuilder.builder()
                         .withTemperature(0.9f)
                         .build()))
@@ -40,7 +40,7 @@ public class ChatModelController {
     }
 
     @GetMapping("/chat/provider-options")
-    String chatWithProviderOptions(@RequestParam(defaultValue = "唐诗三百首") String question) {
+    String chatWithProviderOptions(@RequestParam(defaultValue = "你是谁") String question) {
         return chatModel.call(new Prompt(question, OllamaOptions.create()
                         .withModel("mistral")
                         .withRepeatPenalty(1.5f)))
@@ -48,7 +48,7 @@ public class ChatModelController {
     }
 
     @GetMapping("/chat/stream")
-    Flux<String> chatStream(@RequestParam(defaultValue = "唐诗三百首") String question) {
+    Flux<String> chatStream(@RequestParam(defaultValue = "你是谁") String question) {
         return chatModel.stream(question);
     }
 }
