@@ -1,0 +1,17 @@
+global:
+  scrape_interval:     15s # 设置抓取间隔为每 15 秒。默认是每 1 分钟。
+  evaluation_interval: 15s # 每 15 秒评估一次规则。默认是每 1 分钟。
+  # scrape_timeout 使用全局默认值（10 秒）。
+
+scrape_configs:
+  - job_name: 'scrapeHelloServer' # 配置一个名为 'scrapeHelloServer' 的抓取任务
+    metrics_path: '/actuator/prometheus' # 指定 Prometheus 指标的抓取路径
+    scrape_interval: 15s # 每 15 秒抓取一次指标
+    static_configs:
+      - targets: ['host.docker.internal:8080'] # 目标服务器为 host.docker.internal，端口为 8080
+
+  - job_name: 'scrapeGreetingServer' # 配置另一个名为 'scrapeGreetingServer' 的抓取任务
+    metrics_path: '/actuator/prometheus' # 同样指定 Prometheus 指标的抓取路径
+    scrape_interval: 15s # 每 15 秒抓取一次指标
+    static_configs:
+      - targets: ['host.docker.internal:8081'] # 目标服务器为 host.docker.internal，端口为 8081
