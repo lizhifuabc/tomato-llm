@@ -17,6 +17,7 @@
         <module>tomato-llm-examples-milvus</module>
         <module>tomato-llm-examples-ollama-audio</module>
         <module>tomato-llm-examples-rag</module>
+        <module>tomato-llm-examples-pgvector</module>
     </modules>
 
 </project>

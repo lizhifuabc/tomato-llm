@@ -1,0 +1,23 @@
+spring:
+  ai:
+    ollama:
+      base-url: ${AI_OLLAMA_BASE_URL:http://192.168.18.64:11434}
+      chat:
+        options:
+          model: mistral # 设置 Ollama 聊天模型为 mistral
+          num-ctx: 4096 # 设置模型上下文长度为 4096，用于处理较长的上下文
+      embedding:
+        options:
+          model: nomic-embed-text # 设置嵌入模型为 nomic-embed-text，用于生成文本的嵌入表示
+    vectorstore:
+      pgvector:
+        initialize-schema: true # 启用 pgvector 的初始化模式，以便自动创建所需的数据库结构
+        dimensions: 768 # 设置向量的维度为 768，向量的每个维度表示文本嵌入的一个特征
+        index-type: hnsw # 使用 hnsw（层次化导航小世界图）索引类型，用于加速向量搜索的最近邻查找
+        collection-name: pgvector_collection # 设置向量的集合名称为 pgvector_collection，用于存储向量数据
+---
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:192.168.18.64}:5432/postgres
+    username: postgres
+    password: postgres
