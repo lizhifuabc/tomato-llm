@@ -14,7 +14,7 @@
 	<name>tomato-llm</name>
 	<description>tomato-llm</description>
 	<modules>
-		<module>tomato-vector</module>
+		<module>tomato-llm-vector</module>
 		<module>tomato-llm-examples</module>
 	</modules>
 	<packaging>pom</packaging>
