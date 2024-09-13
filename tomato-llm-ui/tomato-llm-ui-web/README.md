@@ -2,12 +2,14 @@
 
 核心依赖：
 
-```bash
-npm i --save ant-design-vue@4.x
-npm i -D less
-```
+- axios
+- pinia
+- vue-router
+- crypto-js
+- vueuse
+- unocss
 
-开发依赖：
+
 
 ## 基础知识
 
@@ -21,7 +23,7 @@ npm install <package-name>
 npm install <package-name>@<version>
 ```
 
-**安装开发依赖**：
+安装开发依赖：
 
 ```bash
 npm install <package-name> --save-dev
