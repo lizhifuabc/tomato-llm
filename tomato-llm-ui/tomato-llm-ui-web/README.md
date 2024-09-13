@@ -1,13 +1,17 @@
 # PC WEB
 
-核心依赖：
+dependencies：
 
 - axios
 - pinia
 - vue-router
 - crypto-js
-- vueuse
+- vueuse(npm i @vueuse/core)
+
+devDependencies：
+
 - unocss
+- less
 
 
 
