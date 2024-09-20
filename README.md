@@ -94,3 +94,13 @@ sudo systemctl restart ollama
 
 - 向量数据库 ChromaDB：[tomato-llm-examples-chroma](tomato-llm-examples/tomato-llm-examples-chroma)
 - ollama：[tomato-llm-examples-ollama](tomato-llm-examples/tomato-llm-examples-ollama)
+
+
+
+
+
+> 参考项目
+>
+> https://github.com/tencentmusic/supersonic
+>
+> https://github.com/eosphoros-ai/DB-GPT

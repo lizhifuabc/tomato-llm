@@ -73,8 +73,9 @@ CREATE TABLE IF NOT EXISTS `t_connect_config`
     `url`                   varchar(255) DEFAULT NULL COMMENT 'url地址',
     `username`               varchar(255) DEFAULT NULL COMMENT '数据库用户名',
     `password`               varchar(255) DEFAULT NULL COMMENT '数据库密码',
+    `driver_class_name`      varchar(255) DEFAULT NULL COMMENT '数据库驱动类名',
     `comment`                text COMMENT '数据库备注',
     PRIMARY KEY (`connect_config_id`),
     UNIQUE KEY `uk_db` (`name`) COMMENT '唯一键：数据库名称'
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='连接配置表';
-INSERT INTO t_connect_config  VALUES (1, 'mysql', 'demo', 'jdbc:mysql://192.168.18.88:3306/dbgpt', 'root', 'Hxhr1234@', '');
+INSERT INTO t_connect_config  VALUES (1, 'mysql', 'demo', 'jdbc:mysql://192.168.18.88:3306/dbgpt', 'root', 'Hxhr1234@', 'com.mysql.cj.jdbc.Driver','');
