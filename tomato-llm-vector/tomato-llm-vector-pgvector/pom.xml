@@ -5,16 +5,19 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.tomato</groupId>
-        <artifactId>tomato-llm</artifactId>
+        <artifactId>tomato-llm-vector</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>tomato-llm-vector</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>tomato-llm-vector-pgvector</module>
-        <module>tomato-llm-vector-milvus</module>
-    </modules>
+    <artifactId>tomato-llm-vector-pgvector</artifactId>
 
+    <packaging>jar</packaging>
 
+    <dependencies>
+        <!-- Spring AI pgvector -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-pgvector-store-spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
 </project>

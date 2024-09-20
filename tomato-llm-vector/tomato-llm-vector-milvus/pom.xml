@@ -5,16 +5,18 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.tomato</groupId>
-        <artifactId>tomato-llm</artifactId>
+        <artifactId>tomato-llm-vector</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>tomato-llm-vector</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>tomato-llm-vector-pgvector</module>
-        <module>tomato-llm-vector-milvus</module>
-    </modules>
+    <artifactId>tomato-llm-vector-milvus</artifactId>
 
+    <dependencies>
+        <!--  Spring Boot 项目中集成 Milvus 向量数据库存储功能 -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-milvus-store-spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

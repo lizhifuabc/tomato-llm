@@ -5,16 +5,18 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.tomato</groupId>
-        <artifactId>tomato-llm</artifactId>
+        <artifactId>tomato-llm-model</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>tomato-llm-vector</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>tomato-llm-vector-pgvector</module>
-        <module>tomato-llm-vector-milvus</module>
-    </modules>
+    <artifactId>tomato-llm-model-ollama</artifactId>
 
+    <dependencies>
+        <!-- Spring AI Ollama 启动器，集成 Ollama 模型（如 Qwen 1.5B）以进行推理任务 -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
