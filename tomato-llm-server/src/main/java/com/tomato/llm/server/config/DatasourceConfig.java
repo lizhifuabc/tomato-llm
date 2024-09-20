@@ -1,15 +1,12 @@
 package com.tomato.llm.server.config;
 
 import com.tomato.llm.server.dao.ConnectConfigDao;
-import com.tomato.llm.server.util.JdbcDataSourceUtils;
+import com.tomato.llm.server.util.JdbcDataSourceUtil;
 import com.zaxxer.hikari.HikariDataSource;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 数据源配置
@@ -32,7 +29,7 @@ public class DatasourceConfig {
             dataSource.setUsername(config.getUsername());
             dataSource.setPassword(config.getPassword());
             dataSource.setDriverClassName(config.getDriverClassName());
-            JdbcDataSourceUtils.addDataSource(config.getName(), dataSource);
+            JdbcDataSourceUtil.addDataSource(config.getName(), dataSource);
             log.info("初始化数据源：{}", config.getName());
         });
     }

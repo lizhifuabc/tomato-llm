@@ -78,4 +78,4 @@ CREATE TABLE IF NOT EXISTS `t_connect_config`
     PRIMARY KEY (`connect_config_id`),
     UNIQUE KEY `uk_db` (`name`) COMMENT '唯一键：数据库名称'
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='连接配置表';
-INSERT INTO t_connect_config  VALUES (1, 'mysql', 'demo', 'jdbc:mysql://192.168.18.88:3306/dbgpt', 'root', 'Hxhr1234@', 'com.mysql.cj.jdbc.Driver','');
+INSERT INTO t_connect_config  VALUES (1, 'mysql', 'zjw', 'jdbc:mysql://192.168.18.88:3306/zjw', 'root', 'Hxhr1234@', 'com.mysql.cj.jdbc.Driver','');
