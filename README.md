@@ -14,7 +14,7 @@
 
 目前流式对话的实现手段主要有两种：`SSE`和`WebSocket`协议。
 
-- SE是基于Http实现的一种服务端向客户端推送消息的技术，实现较为简单，OpenAI官网采用的是SSE实现的。
+- SSE是基于Http实现的一种服务端向客户端推送消息的技术，实现较为简单，OpenAI官网采用的是SSE实现的。
 - WebSocket则是基于TCP协议实现的全双工通信技术。较为复杂，资源的占用率很高。
 
 Spring AI中流式对话接口采用的是Spring WebFlux异步网络框架实现的，WebFlux底层默认采用Netty。
